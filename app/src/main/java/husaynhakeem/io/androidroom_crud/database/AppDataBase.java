@@ -5,7 +5,9 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import husaynhakeem.io.androidroom_crud.dao.BaseDao;
+import husaynhakeem.io.androidroom_crud.dao.AddressDao;
+import husaynhakeem.io.androidroom_crud.dao.CatDao;
+import husaynhakeem.io.androidroom_crud.dao.PersonDao;
 import husaynhakeem.io.androidroom_crud.entity.Address;
 import husaynhakeem.io.androidroom_crud.entity.Cat;
 import husaynhakeem.io.androidroom_crud.entity.Person;
@@ -19,7 +21,11 @@ public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase instance;
 
-    public abstract BaseDao dao();
+
+    public abstract CatDao catDao();
+    public abstract PersonDao personDao();
+    public abstract AddressDao addressDao();
+
 
     public static AppDataBase getAppDatabase(Context context) {
         if (instance == null) {
