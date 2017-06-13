@@ -1,4 +1,4 @@
-package husaynhakeem.io.androidroom_crud;
+package husaynhakeem.io.androidroom_crud.utilities;
 
 import husaynhakeem.io.androidroom_crud.database.AppDataBase;
 import husaynhakeem.io.androidroom_crud.entity.Address;
@@ -12,12 +12,19 @@ import husaynhakeem.io.androidroom_crud.entity.Person;
 public class DataGenerator {
 
 
+    private static DataGenerator instance;
     private static AppDataBase dataBase;
 
 
     public static DataGenerator with(AppDataBase appDataBase) {
-        dataBase = appDataBase;
-        return new DataGenerator();
+
+        if (dataBase == null)
+            dataBase = appDataBase;
+
+        if (instance == null)
+            instance = new DataGenerator();
+
+        return instance;
     }
 
 
@@ -27,9 +34,9 @@ public class DataGenerator {
 
         Person[] persons = new Person[4];
         persons[0] = personInstance(1, "Husayn", "Hakeem");
-        persons[0] = personInstance(2, "Afafe", "Mokhtari");
-        persons[0] = personInstance(3, "Abderrahmane", "Bachiri");
-        persons[0] = personInstance(4, "Jalal", "Khaldouni");
+        persons[1] = personInstance(2, "Afafe", "Mokhtari");
+        persons[2] = personInstance(3, "Abderrahmane", "Bachiri");
+        persons[3] = personInstance(4, "Jalal", "Khaldouni");
 
         dataBase.personDao().insert(persons);
     }
@@ -88,7 +95,4 @@ public class DataGenerator {
 
         return cat;
     }
-
-
-
 }

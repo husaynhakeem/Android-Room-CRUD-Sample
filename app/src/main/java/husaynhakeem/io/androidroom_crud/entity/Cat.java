@@ -16,8 +16,8 @@ import android.arch.persistence.room.PrimaryKey;
         indices = {@Index("hooman_id")})
 public class Cat {
 
-    @PrimaryKey
-    public String id;
+    @PrimaryKey(autoGenerate = true)
+    public int id;
     public String name;
     public int age;
 
